@@ -1,15 +1,24 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import {TextInput} from "react-native-paper";
+import Colors from "../constants/Colors";
 
 export default function TabOneScreen() {
+  const [text, setText] = React.useState('');
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.js" />
+    <View>
+      <TextInput
+          // style={{backgroundColor: Colors.primaryColor}}
+          label="Address"
+          value={text}
+          mode="outlined"
+          underlineColor={Colors.primaryColor}
+          selectionColor={Colors.primaryColor}
+          onChangeText={text => setText(text)}
+      />
     </View>
   );
 }

@@ -9,18 +9,20 @@ export type BottomTabParamList = {
   TabThree: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type TabConfigParamList = {
+  Configuration: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type TabHomeParamList = {
+  Home: undefined;
+};
+
+export type TabAddDevicesParamList = {
+  AddDevice: undefined;
 };
 
 export type SwitchDevice = {
-//
 }
 
-export type RangedDevice = {
-
+export type RangeDevice = {
 }

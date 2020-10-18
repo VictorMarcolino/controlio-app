@@ -5,11 +5,12 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import {BottomTabParamList, TabOneParamList, TabTwoParamList} from '../types';
+import TabConfigScreen from '../screens/TabOneScreen';
+import TabHomeScreen from '../screens/TabTwoScreen';
+import {BottomTabParamList, TabAddDevicesParamList, TabConfigParamList, TabHomeParamList} from '../types';
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import colors from "../constants/Colors";
+import TabAddScreen from "../screens/TabAddScreen";
 
 const Tab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
@@ -25,7 +26,7 @@ export default function BottomTabNavigator() {
                 name="TabOne"
                 component={TabOneNavigator}
                 options={{
-                    tabBarLabel: '1',
+                    tabBarLabel: 'Server',
                     tabBarIcon: ({color}) => {
                         return <MaterialCommunityIcons name="file-document" color={color} size={26}/>
                     },
@@ -33,9 +34,9 @@ export default function BottomTabNavigator() {
             />
             <Tab.Screen
                 name="TabTwo"
-                component={TabTwoNavigator}
+                component={DevicesHome}
                 options={{
-                    tabBarLabel: '2',
+                    tabBarLabel: 'Devices',
                     tabBarIcon: ({color}) => {
                         return <MaterialCommunityIcons name="file-document" color={color} size={26}/>
                     },
@@ -43,9 +44,9 @@ export default function BottomTabNavigator() {
             />
             <Tab.Screen
                 name="TabThree"
-                component={TabTwoNavigator}
+                component={DevicesAdd}
                 options={{
-                    tabBarLabel: '3',
+                    tabBarLabel: 'Add Devices',
                     tabBarIcon: ({color}) => {
                         return <MaterialCommunityIcons name="file-document" color={color} size={26}/>
                     },
@@ -63,30 +64,44 @@ function TabBarIcon(props: { name: string; color: string }) {
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const TabOneStack = createStackNavigator<TabConfigParamList>();
 
 function TabOneNavigator() {
     return (
         <TabOneStack.Navigator>
             <TabOneStack.Screen
-                name="TabOneScreen"
-                component={TabOneScreen}
-                options={{headerTitle: 'Tab One Title'}}
+                name="Configuration"
+                component={TabConfigScreen}
+                options={{headerTitle: 'Configuration'}}
             />
         </TabOneStack.Navigator>
     );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const HomeStack = createStackNavigator<TabHomeParamList>();
 
-function TabTwoNavigator() {
+function DevicesHome() {
     return (
-        <TabTwoStack.Navigator>
-            <TabTwoStack.Screen
-                name="TabTwoScreen"
-                component={TabTwoScreen}
-                options={{headerTitle: 'Tab Two Title'}}
+        <HomeStack.Navigator>
+            <HomeStack.Screen
+                name="Home"
+                component={TabHomeScreen}
+                options={{headerTitle: 'Home'}}
             />
-        </TabTwoStack.Navigator>
+        </HomeStack.Navigator>
+    );
+}
+
+const TabDevicesAddStack = createStackNavigator<TabAddDevicesParamList>();
+
+function DevicesAdd() {
+    return (
+        <TabDevicesAddStack.Navigator>
+            <TabDevicesAddStack.Screen
+                name="AddDevice"
+                component={TabAddScreen}
+                options={{headerTitle: 'Add Device'}}
+            />
+        </TabDevicesAddStack.Navigator>
     );
 }
