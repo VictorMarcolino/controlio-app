@@ -21,8 +21,22 @@ export type TabAddDevicesParamList = {
   AddDevice: undefined;
 };
 
-export type SwitchDevice = {
+
+export interface Device {
+  identifier: string;
+  name: string;
 }
 
-export type RangeDevice = {
+export interface DeviceSwitch extends Device {
+  isOn: boolean;
+}
+
+export interface DeviceRange extends Device {
+  currentValue: number;
+  maxValue: number;
+  minValue: number;
+}
+
+export interface RootState {
+  devices: any
 }

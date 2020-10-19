@@ -5,19 +5,15 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { View} from '../components/Themed';
 import {Avatar, Button, Card, Paragraph, Text, Title} from "react-native-paper";
 import Colors from "../constants/Colors";
+import {useSelector} from "react-redux";
+import devicesReducer from "../store/reducers/devices";
+import {RootState} from "../types";
 // @ts-ignore
 const LeftContent = props => <Avatar.Icon {...props} icon="folder"/>
 
-const dario = [
-    {identifier: '1', data: 1},
-    {identifier: '2', data: 1},
-    {identifier: '3', data: 1},
-    {identifier: '4', data: 1},
-    {identifier: '5', data: 1},
-    {identifier: '6', data: 1},
-    {identifier: '7', data: 1},
-]
 export default function TabTwoScreen() {
+    const dario = useSelector((state: RootState) => state.devices)
+    console.log(dario)
     return (
         <View style={{marginHorizontal: 16}}>
             <FlatList data={dario} keyExtractor={item => item.identifier}
