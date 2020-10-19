@@ -6,7 +6,7 @@ import { Text, View } from '../components/Themed';
 import {TextInput} from "react-native-paper";
 import Colors from "../constants/Colors";
 
-export default function TabOneScreen() {
+export default function ConfigScreen() {
   const [text, setText] = React.useState('');
   return (
     <View>

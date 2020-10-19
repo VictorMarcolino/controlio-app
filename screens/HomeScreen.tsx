@@ -11,12 +11,11 @@ import {RootState} from "../types";
 // @ts-ignore
 const LeftContent = props => <Avatar.Icon {...props} icon="folder"/>
 
-export default function TabTwoScreen() {
-    const dario = useSelector((state: RootState) => state.devices)
-    console.log(dario)
+export default function HomeScreen() {
+    const devices = useSelector((state: RootState) => state.devices);
     return (
         <View style={{marginHorizontal: 16}}>
-            <FlatList data={dario} keyExtractor={item => item.identifier}
+            <FlatList data={devices} keyExtractor={item => item.identifier}
                       renderItem={
                           ({index,item,separators}) => {
                               return (

@@ -5,12 +5,12 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabConfigScreen from '../screens/TabOneScreen';
-import TabHomeScreen from '../screens/TabTwoScreen';
+import TabConfigScreen from '../screens/ConfigScreen';
+import TabHomeScreen from '../screens/HomeScreen';
 import {BottomTabParamList, TabAddDevicesParamList, TabConfigParamList, TabHomeParamList} from '../types';
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import colors from "../constants/Colors";
-import TabAddScreen from "../screens/TabAddScreen";
+import AddDeviceScreen from "../screens/AddDeviceScreen";
 
 const Tab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
@@ -99,7 +99,7 @@ function DevicesAdd() {
         <TabDevicesAddStack.Navigator>
             <TabDevicesAddStack.Screen
                 name="AddDevice"
-                component={TabAddScreen}
+                component={AddDeviceScreen}
                 options={{headerTitle: 'Add Device'}}
             />
         </TabDevicesAddStack.Navigator>
