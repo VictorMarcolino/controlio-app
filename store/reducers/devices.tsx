@@ -1,12 +1,6 @@
-import {FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE} from "../actions/devices";
+import {FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE} from "../actions";
 
-const initialState = [{identifier: '1', data: 1},
-    {identifier: '2', data: 1},
-    {identifier: '3', data: 1},
-    {identifier: '4', data: 1},
-    {identifier: '5', data: 1},
-    {identifier: '6', data: 1},
-    {identifier: '7', data: 1}];
+const initialState: { identifier: string, is_on: boolean }[] = [];
 
 function devicesReducer(state = initialState, action: any) {
     switch (action.type) {

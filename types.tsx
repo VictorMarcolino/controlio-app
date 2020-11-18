@@ -39,5 +39,6 @@ export interface DeviceRange extends Device {
 }
 
 export interface RootState {
+  config: any;
   devices: any
 }

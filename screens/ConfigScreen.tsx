@@ -1,33 +1,40 @@
 import * as React from 'react';
 import {StyleSheet} from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import {View} from '../components/Themed';
 import {TextInput} from "react-native-paper";
 import Colors from "../constants/Colors";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../types";
+import {set_host} from "../store/actions/config";
 
 export default function ConfigScreen() {
-  const [text, setText] = React.useState('');
+  const config = useSelector((state: RootState) => state.config);
+  const [text, setText] = React.useState(config.host.url);
+  const dispatch = useDispatch();
   return (
-    <View>
-      <TextInput
-          // style={{backgroundColor: Colors.primaryColor}}
-          label="Address"
-          value={text}
-          mode="outlined"
-          underlineColor={Colors.primaryColor}
-          selectionColor={Colors.primaryColor}
-          onChangeText={text => setText(text)}
-      />
-    </View>
+      <View style={styles.container}>
+        <TextInput
+            // style={{backgroundColor: Colors.primaryColor}}
+            label="Address"
+            value={text}
+            mode="outlined"
+            underlineColor={Colors.primaryColor}
+            selectionColor={Colors.primaryColor}
+            onChangeText={text => setText(text)}
+            onEndEditing={text => {
+              dispatch(set_host({url: text.nativeEvent.text}))
+            }}
+        />
+      </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: 16,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   title: {
     fontSize: 20,
