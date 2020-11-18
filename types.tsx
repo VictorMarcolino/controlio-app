@@ -25,6 +25,7 @@ export type TabAddDevicesParamList = {
 export interface Device {
   identifier: string;
   name: string;
+  is_on: boolean;
 }
 
 export interface DeviceSwitch extends Device {
