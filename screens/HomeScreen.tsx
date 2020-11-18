@@ -77,6 +77,7 @@ export default function HomeScreen() {
                                                   })
                                               },(error)=>{
                                                   console.log(error)
+                                                  console.log(error)
                                               })
                                           }}>Switch</Button>
                                       </Card.Actions>
