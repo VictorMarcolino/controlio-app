@@ -29,7 +29,6 @@ export interface Device {
 }
 
 export interface DeviceSwitch extends Device {
-  isOn: boolean;
 }
 
 export interface DeviceRange extends Device {

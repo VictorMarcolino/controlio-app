@@ -1,6 +1,7 @@
 import {store} from "../index";
-import {FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE} from "./index";
+import {CREATE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE} from "./index";
 import {ToastAndroid} from "react-native";
+import {Device} from "../../types";
 
 
 export const fetch_device = (identifier: string) => {
@@ -21,8 +22,8 @@ export const fetch_devices = () => {
             }
         ).then((res) => {
             res.json().then((r) => {
-                console.log('devices:')
-                console.log(r)
+
+
                 dispatch({type: FETCH_DEVICES, devices: r})
             }, error => {
                 ToastAndroid.showWithGravity(
@@ -30,7 +31,7 @@ export const fetch_devices = () => {
                     ToastAndroid.LONG, //can be SHORT, LONG
                     ToastAndroid.TOP, //can be TOP, BOTTON, CENTER
                 );
-                console.log(error)
+
             })
         }, error => {
             ToastAndroid.showWithGravity(
@@ -38,8 +39,39 @@ export const fetch_devices = () => {
                 ToastAndroid.LONG, //can be SHORT, LONG
                 ToastAndroid.TOP, //can be TOP, BOTTON, CENTER
             );
-            console.log(error)
+
         })
+
+    }
+};
+export const create_device = (device: Device) => {
+    const host = store.getState().config.host.url
+
+
+    return (dispatch: any) => {
+        fetch(`${host}/api/device_switch/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(device)
+        }).then((res) => {
+
+            res.json().then((dev: Device) => {
+                dispatch({type: CREATE_DEVICE, device: dev})
+                dispatch(fetch_devices())
+            }, error => {
+
+            })
+        }, error => {
+
+            ToastAndroid.showWithGravity(
+                'POST ERROR',
+                ToastAndroid.LONG,
+                ToastAndroid.TOP,
+            );
+
+        });
 
     }
 };
@@ -58,16 +90,15 @@ export const toggle_switch = (device: any) => {
                 res => {
                     res.json().then(
                         (response) => {
-                            console.log(response)
                             dispatch({type: TOGGLE_DEVICE, device: response})
                         }, error => {
-                            console.log(error)
+
                         }
                     )
 
                 },
                 error => {
-                    console.log(error)
+
                 });
     }
 }
