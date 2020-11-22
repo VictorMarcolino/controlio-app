@@ -1,15 +1,13 @@
 import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import * as React from 'react';
 
-import Colors from '../constants/Colors';
+import colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabConfigScreen from '../screens/ConfigScreen';
 import TabHomeScreen from '../screens/HomeScreen';
 import {BottomTabParamList, TabAddDevicesParamList, TabConfigParamList, TabHomeParamList} from '../types';
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
-import colors from "../constants/Colors";
 import AddDeviceScreen from "../screens/AddDeviceScreen";
 
 const Tab = createMaterialBottomTabNavigator<BottomTabParamList>();
@@ -28,7 +26,7 @@ export default function BottomTabNavigator() {
                 options={{
                     tabBarLabel: 'Server',
                     tabBarIcon: ({color}) => {
-                        return <MaterialCommunityIcons name="file-document" color={color} size={26}/>
+                        return <MaterialCommunityIcons name="wrench" color={color} size={26}/>
                     },
                 }}
             />
@@ -38,7 +36,7 @@ export default function BottomTabNavigator() {
                 options={{
                     tabBarLabel: 'Devices',
                     tabBarIcon: ({color}) => {
-                        return <MaterialCommunityIcons name="file-document" color={color} size={26}/>
+                        return <MaterialCommunityIcons name="chip" color={color} size={26}/>
                     },
                 }}
             />
@@ -48,7 +46,7 @@ export default function BottomTabNavigator() {
                 options={{
                     tabBarLabel: 'Add Devices',
                     tabBarIcon: ({color}) => {
-                        return <MaterialCommunityIcons name="file-document" color={color} size={26}/>
+                        return <MaterialCommunityIcons name="layers-plus" color={color} size={26}/>
                     },
                 }}
             />

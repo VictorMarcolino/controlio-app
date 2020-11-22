@@ -32,11 +32,11 @@ export default function HomeScreen(props: any) {
 }
 
 
-function DeviceSwitchComponent({identifier, is_on}: { identifier: string, is_on: boolean }) {
+function DeviceSwitchComponent({identifier, is_on, name}: { identifier: string, is_on: boolean, name: string }) {
     const dispatch = useDispatch();
     return <View style={{backgroundColor: "#f0f0f0"}}>
-        <Card elevation={0} style={{marginBottom: 150, backgroundColor: Colors.primaryColor}}>
-            <Card.Title title={identifier} subtitle={`Ligado: ${is_on}`}/>
+        <Card elevation={0} style={{marginBottom: 8, backgroundColor: Colors.primaryColor}}>
+            <Card.Title title={name} subtitle={`Ligado: ${is_on}`}/>
             <Card.Actions style={styles.container}>
                 <Button onPress={() => {
                     dispatch(toggle_switch({identifier: identifier, is_on: !is_on}));

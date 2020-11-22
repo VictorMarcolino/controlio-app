@@ -26,11 +26,11 @@ export default function AddDeviceScreen() {
                 onChangeText={_text => setObj({...object, name: _text})}
                 style={{marginVertical: 16}}
             />
-            <Button icon="content-save-move" mode="contained" onPress={() => {
+            <Button color={Colors.primaryColor} icon="content-save-move" mode="contained" onPress={() => {
 
                 if (object.name) {
-
                     dispatch(create_device(object))
+                    setObj({...object, name: ''})
                 }
             }}>
                 Save
