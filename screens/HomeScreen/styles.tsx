@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     },
     list_card: {
         // backgroundColor: '#f0f0f0'
+        paddingTop: 8
     },
     card: {
         marginBottom: 8,

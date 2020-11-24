@@ -82,7 +82,7 @@ const HomeStack = createStackNavigator<TabHomeParamList>();
 
 function DevicesHome() {
     return (
-        <HomeStack.Navigator>
+        <HomeStack.Navigator screenOptions={{headerShown: false}}>
             <HomeStack.Screen
                 name="Home"
                 component={TabHomeScreen}
