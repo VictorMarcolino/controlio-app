@@ -26,6 +26,7 @@ export interface Device {
   identifier: string;
   name: string;
   is_on: boolean;
+  selected: boolean;
 }
 
 export interface DeviceSwitch extends Device {

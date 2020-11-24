@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {View} from '../components/Themed';
-import {Button, TextInput} from "react-native-paper";
+import {Button, TextInput, useTheme} from "react-native-paper";
 import Colors from "../constants/Colors";
 import {Device} from "../types";
 import {create_device} from "../store/actions/devices";
@@ -9,6 +9,7 @@ import {useDispatch} from "react-redux";
 
 
 export default function AddDeviceScreen() {
+    const {colors} = useTheme();
     const dispatch = useDispatch();
     const [object, setObj] = React.useState({
         identifier: '',
@@ -16,7 +17,7 @@ export default function AddDeviceScreen() {
         name: ''
     } as Device);
     return (
-        <View style={{marginHorizontal: 10}}>
+        <View style={{marginHorizontal: 10, backgroundColor: colors.background}}>
             <TextInput
                 label="Name"
                 value={object.name}
@@ -26,7 +27,7 @@ export default function AddDeviceScreen() {
                 onChangeText={_text => setObj({...object, name: _text})}
                 style={{marginVertical: 16}}
             />
-            <Button color={Colors.primaryColor} icon="content-save-move" mode="contained" onPress={() => {
+            <Button icon="content-save-move" mode="contained" onPress={() => {
 
                 if (object.name) {
                     dispatch(create_device(object))

@@ -7,18 +7,10 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 import {Provider} from "react-redux";
 import {store} from "./store";
-import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
+import {Provider as PaperProvider} from 'react-native-paper';
+import {theme} from "./constants/Colors";
 
-const theme = {
-    ...DefaultTheme,
-    roundness: 2,
-    colors: {
-        ...DefaultTheme.colors,
-        primary: '#3498db',
-        accent: '#f1c40f',
-    },
 
-};
 export default function App() {
 
     const isLoadingComplete = useCachedResources();

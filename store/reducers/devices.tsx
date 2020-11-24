@@ -1,6 +1,7 @@
-import {CREATE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE} from "../actions";
+import {CREATE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE, UPDATE_DEVICE_STATE} from "../actions";
+import {Device} from "../../types";
 
-const initialState: { identifier: string, is_on: boolean }[] = [];
+const initialState: Device[] = [];
 
 function devicesReducer(state = initialState, action: any) {
     switch (action.type) {
@@ -16,6 +17,12 @@ function devicesReducer(state = initialState, action: any) {
                 return item.identifier === action.device.identifier
             })
             state[i] = action.device
+            return [...state];
+        case UPDATE_DEVICE_STATE:
+            const ii = state.findIndex((item, index, arr) => {
+                return item.identifier === action.device.identifier
+            })
+            state[ii].selected = action.device.selected
             return [...state];
         default:
             break;

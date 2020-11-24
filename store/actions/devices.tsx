@@ -1,5 +1,5 @@
 import {store} from "../index";
-import {CREATE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE} from "./index";
+import {CREATE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE, UPDATE_DEVICE_STATE} from "./index";
 import {ToastAndroid} from "react-native";
 import {Device} from "../../types";
 
@@ -21,9 +21,11 @@ export const fetch_devices = () => {
                 }
             }
         ).then((res) => {
-            res.json().then((r) => {
+            res.json().then((r: []) => {
 
-
+                r.forEach((obj: Device) => {
+                    obj.selected = false
+                })
                 dispatch({type: FETCH_DEVICES, devices: r})
             }, error => {
                 ToastAndroid.showWithGravity(
@@ -75,6 +77,10 @@ export const create_device = (device: Device) => {
 
     }
 };
+
+export const update_device = (device: any) => {
+    return {type: UPDATE_DEVICE_STATE, device: device}
+}
 export const toggle_switch = (device: any) => {
     const host = store.getState().config.host.url
     return (dispatch: any) => {

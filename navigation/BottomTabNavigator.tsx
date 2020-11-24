@@ -2,23 +2,24 @@ import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons';
 import {createStackNavigator} from '@react-navigation/stack';
 import * as React from 'react';
 
-import colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
+// import colors from '../constants/Colors';
+// import useColorScheme from '../hooks/useColorScheme';
 import TabConfigScreen from '../screens/ConfigScreen';
 import TabHomeScreen from '../screens/HomeScreen';
 import {BottomTabParamList, TabAddDevicesParamList, TabConfigParamList, TabHomeParamList} from '../types';
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import AddDeviceScreen from "../screens/AddDeviceScreen";
+import {withTheme} from "react-native-paper";
 
 const Tab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
-export default function BottomTabNavigator() {
-    const colorScheme = useColorScheme();
+function BottomTabNavigator(props: any) {
+    const {colors} = props.theme;
 
     return (
         <Tab.Navigator
             initialRouteName="TabOne" barStyle={{
-            backgroundColor: colors.primaryColor
+            backgroundColor: colors.primary
         }}>
             <Tab.Screen
                 name="TabOne"
@@ -54,6 +55,7 @@ export default function BottomTabNavigator() {
     );
 }
 
+export default withTheme(BottomTabNavigator);
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: { name: string; color: string }) {
