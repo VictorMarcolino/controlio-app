@@ -3,17 +3,17 @@ import {TabConfigParamList} from "../../types";
 import TabConfigScreen from "../../screens/ConfigScreen";
 import * as React from "react";
 
-const TabOneStack = createStackNavigator<TabConfigParamList>();
+const Stack = createStackNavigator<TabConfigParamList>();
 
 export default function ConfigurationTab() {
     return (
-        <TabOneStack.Navigator>
-            <TabOneStack.Screen
+        <Stack.Navigator>
+            <Stack.Screen
                 name="Configuration"
                 component={TabConfigScreen}
                 options={{headerTitle: 'Configuration'}}
             />
-        </TabOneStack.Navigator>
+        </Stack.Navigator>
     );
 }
 

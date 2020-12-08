@@ -17,22 +17,19 @@ export default function HomeScreen(props: any) {
     useEffect(() => {
         dispatch(fetch_devices());
     }, [dispatch, config.host.url])
-    let selected = [];
-    devices.forEach((d) => {
-        if (d.selected) {
-            selected.push(d)
-        }
-    })
+    let selected = devices.filter((d) => {
+        return d.selected;
+    });
     return (
 
         <FlatList data={devices} keyExtractor={item => item.identifier}
-                      style={styles.list_card}
-                      initialNumToRender={7}
-                      renderItem={
-                          ({index, item, separators}) => {
-                              return <DeviceSwitchComponent index={index} {...item}/>
-                          }
-                      }>
+                  style={styles.list_card}
+                  initialNumToRender={7}
+                  renderItem={
+                      ({index, item, separators}) => {
+                          return <DeviceSwitchComponent index={index} {...item} editMode={selected.length != 0}/>
+                      }
+                  }>
             </FlatList>
 
 

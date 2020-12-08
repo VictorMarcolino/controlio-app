@@ -3,19 +3,35 @@ import {Button, Card} from "react-native-paper";
 import {toggle_switch, update_device} from "../../../store/actions/devices";
 import * as React from "react";
 import styles from "../styles";
+import * as Haptics from 'expo-haptics';
 
-export default function DeviceSwitchComponent({identifier, is_on, name, selected, index}: { identifier: string, is_on: boolean, name: string, selected: boolean, index: number }) {
+
+export default function DeviceSwitchComponent({
+                                                  identifier,
+                                                  is_on,
+                                                  name,
+                                                  selected,
+                                                  index,
+                                                  editMode
+                                              }: { identifier: string, is_on: boolean, editMode: boolean, name: string, selected: boolean, index: number }) {
     const dispatch = useDispatch();
+    const toggleSelected = () => {
+        dispatch(update_device({identifier: identifier, selected: !selected}));
+        Haptics.selectionAsync().then(r => {
+        })
+    }
+    const changeState = () => {
+        dispatch(toggle_switch({identifier: identifier, is_on: !is_on}));
+    }
     const s = (selected) ? styles.selectedCard : {}
     return (
-        <Card elevation={0} style={{...styles.card, ...s}} onLongPress={() => {
-            dispatch(update_device({identifier: identifier, selected: !selected}));
+        <Card elevation={0} style={{...styles.card, ...s}} onLongPress={editMode ? () => {
+        } : toggleSelected} onPress={editMode ? toggleSelected : () => {
         }}>
             <Card.Title title={name} subtitle={`Ligado: ${is_on}`}/>
             <Card.Actions>
-                <Button style={{...styles.container}} mode="contained" onPress={() => {
-                    dispatch(toggle_switch({identifier: identifier, is_on: !is_on}));
-                }}
+                <Button style={{...styles.container}} mode="contained" onPress={editMode ? () => {
+                } : changeState}
                 >
                     Switch
                 </Button>

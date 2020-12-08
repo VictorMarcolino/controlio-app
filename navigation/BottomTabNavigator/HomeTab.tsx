@@ -4,18 +4,20 @@ import TabHomeScreen from "../../screens/HomeScreen";
 import * as React from "react";
 import {HomeHeader} from "./Components";
 
-const HomeStack = createStackNavigator<TabHomeParamList>();
+const Stack = createStackNavigator<TabHomeParamList>();
 
 export default function DevicesHomeTab() {
     return (
-        <HomeStack.Navigator screenOptions={
-            {header: HomeHeader}
+        <Stack.Navigator screenOptions={
+            {
+                header: HomeHeader
+            }
         }>
-            <HomeStack.Screen
+            <Stack.Screen
                 name="Home"
                 component={TabHomeScreen}
                 options={{headerTitle: 'Home'}}
             />
-        </HomeStack.Navigator>
+        </Stack.Navigator>
     );
 }

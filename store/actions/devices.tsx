@@ -2,6 +2,7 @@ import {store} from "../index";
 import {CREATE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE, UPDATE_DEVICE_STATE} from "./index";
 import {ToastAndroid} from "react-native";
 import {Device} from "../../types";
+import * as Haptics from 'expo-haptics';
 
 
 export const fetch_device = (identifier: string) => {
@@ -97,14 +98,19 @@ export const toggle_switch = (device: any) => {
                     res.json().then(
                         (response) => {
                             dispatch({type: TOGGLE_DEVICE, device: response})
-                        }, error => {
+                            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).then(r => {
+                            })
 
+                        }, error => {
+                            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).then(r => {
+                            })
                         }
                     )
 
                 },
                 error => {
-
+                    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).then(r => {
+                    })
                 });
     }
 }

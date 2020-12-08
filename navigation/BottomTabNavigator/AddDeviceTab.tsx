@@ -3,16 +3,16 @@ import {TabAddDevicesParamList} from "../../types";
 import AddDeviceScreen from "../../screens/AddDeviceScreen";
 import * as React from "react";
 
-const TabDevicesAddStack = createStackNavigator<TabAddDevicesParamList>();
+const Stack = createStackNavigator<TabAddDevicesParamList>();
 
 export default function DevicesAddTab() {
     return (
-        <TabDevicesAddStack.Navigator>
-            <TabDevicesAddStack.Screen
+        <Stack.Navigator>
+            <Stack.Screen
                 name="AddDevice"
                 component={AddDeviceScreen}
                 options={{headerTitle: 'Add Device'}}
             />
-        </TabDevicesAddStack.Navigator>
+        </Stack.Navigator>
     );
 }
