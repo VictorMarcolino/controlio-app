@@ -9,10 +9,10 @@ const styles = StyleSheet.create({
     },
     list_card: {
         // backgroundColor: '#f0f0f0'
-        paddingTop: 8
+        paddingVertical: 0,
     },
     card: {
-        marginBottom: 8,
+        marginVertical: 8,
         marginHorizontal: 8,
         // backgroundColor: Colors.primaryColor,
     },
