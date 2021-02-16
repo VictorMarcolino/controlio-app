@@ -16,7 +16,7 @@ export default function DevicesHomeTab() {
             <Stack.Screen
                 name="Home"
                 component={TabHomeScreen}
-                options={{headerTitle: 'Home'}}
+                // options={{headerTitle: 'Home'}}
             />
         </Stack.Navigator>
     );

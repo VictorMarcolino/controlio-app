@@ -8,7 +8,7 @@ export const colors = {
     surface: '#08122a',
     selectedSurface: '#2052b8',
     background: '#f1faee',
-    text: '#f1faee',
+    text: '#2052b8',
 }
 export default {
     primaryColor: "#2268d4",
