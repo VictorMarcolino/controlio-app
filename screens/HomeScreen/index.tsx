@@ -21,7 +21,6 @@ export default function HomeScreen(props: any) {
         return d.selected;
     });
     return (
-
         <FlatList data={devices} keyExtractor={item => item.identifier}
                   style={styles.list_card}
                   initialNumToRender={7}
@@ -30,9 +29,7 @@ export default function HomeScreen(props: any) {
                           return <DeviceSwitchComponent index={index} {...item} editMode={selected.length != 0}/>
                       }
                   }>
-            </FlatList>
-
-
+        </FlatList>
     );
 }
 

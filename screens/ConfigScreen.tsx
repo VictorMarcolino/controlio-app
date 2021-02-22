@@ -14,12 +14,7 @@ export default function ConfigScreen() {
     return (
         <View style={styles.container}>
             <TextInput
-                style={{
-                    // backgroundColor: Colors.primaryColor,
-                    marginTop: 10,
-
-                    // color:'black'
-                }}
+                style={styles.textInput}
                 label="Address"
                 value={text}
                 mode="outlined"
@@ -38,18 +33,10 @@ export default function ConfigScreen() {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
-        flex: 1, marginHorizontal: 10, backgroundColor: colors.background
-        // marginTop: 50,
-        // alignItems: 'center',
-        // justifyContent: 'center',
+        flex: 1,
+        backgroundColor: colors.background
     },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
-    },
+    textInput: {
+        marginTop: 10,
+    }
 });

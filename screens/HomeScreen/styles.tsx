@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     list_card: {
-        // backgroundColor: '#f0f0f0'
+        backgroundColor: colors.background,
         paddingVertical: 0,
     },
     card: {

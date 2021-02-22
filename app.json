@@ -2,9 +2,9 @@
   "expo": {
     "name": "ControlIO",
     "slug": "ControlIO",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/remote-control.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -25,7 +25,13 @@
       "favicon": "./assets/images/favicon.png"
     },
     "android": {
-      "package": "com.victorrl.ControlIO"
+      "package": "com.victorrl.ControlIO",
+      "versionCode": 2,
+      "permissions": [
+        "VIBRATE",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     }
   }
 }
