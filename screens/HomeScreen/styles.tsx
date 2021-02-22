@@ -1,6 +1,9 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet, TextStyle} from "react-native";
 import {colors} from "../../constants/Colors";
 
+const text: TextStyle = {
+    color: "#ffffff",
+}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -18,8 +21,10 @@ const styles = StyleSheet.create({
     },
     selectedCard: {
         backgroundColor: colors.selectedSurface,
+
         // borderColor: '#000000',
         // borderWidth: 3
-    }
+    },
+    textStyle: text
 });
 export default styles;

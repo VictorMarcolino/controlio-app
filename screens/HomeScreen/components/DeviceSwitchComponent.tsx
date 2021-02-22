@@ -4,6 +4,7 @@ import {toggle_switch, update_device} from "../../../store/actions/devices";
 import * as React from "react";
 import styles from "../styles";
 import * as Haptics from 'expo-haptics';
+import {Text} from "react-native";
 
 
 export default function DeviceSwitchComponent({
@@ -23,14 +24,21 @@ export default function DeviceSwitchComponent({
     const changeState = () => {
         dispatch(toggle_switch({identifier: identifier, is_on: !is_on}));
     }
-    const s = (selected) ? styles.selectedCard : {}
+    const s = (selected) ? styles.selectedCard : {};
     return (
         <Card elevation={0} style={{...styles.card, ...s}} onLongPress={editMode ? () => {
         } : toggleSelected} onPress={editMode ? toggleSelected : () => {
         }}>
-            <Card.Title title={name} subtitle={`Ligado: ${is_on}`}/>
+            <Card.Title title={name}
+                        titleStyle={styles.textStyle}
+            />
+            <Card.Content>
+                <Text style={styles.textStyle}>{`Connection: ${is_on ? "Online" : "Offline"}`}</Text>
+                <Text style={styles.textStyle}>{`State: ${is_on ? "High" : "Low"}`}</Text>
+            </Card.Content>
             <Card.Actions>
-                <Button style={{...styles.container}} mode="contained" onPress={editMode ? () => {
+                <Button disabled={false} style={{...styles.container}}
+                        mode="contained" onPress={editMode ? () => {
                 } : changeState}
                 >
                     Switch

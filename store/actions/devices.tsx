@@ -1,5 +1,5 @@
 import {store} from "../index";
-import {CREATE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE, UPDATE_DEVICE_STATE} from "./index";
+import {CREATE_DEVICE, DELETE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE, UPDATE_DEVICE_STATE} from "./index";
 import {ToastAndroid} from "react-native";
 import {Device} from "../../types";
 import * as Haptics from 'expo-haptics';
@@ -98,6 +98,40 @@ export const toggle_switch = (device: any) => {
                     res.json().then(
                         (response) => {
                             dispatch({type: TOGGLE_DEVICE, device: response})
+                            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).then(r => {
+                            })
+
+                        }, error => {
+                            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).then(r => {
+                            })
+                        }
+                    )
+
+                },
+                error => {
+                    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).then(r => {
+                    })
+                });
+    }
+}
+
+
+export const delete_device = (device: any) => {
+    const host = store.getState().config.host.url
+    return (dispatch: any) => {
+        const url = `${host}/api/device_switch/${device.identifier}`
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // body: JSON.stringify(device)
+        })
+            .then(
+                res => {
+                    res.json().then(
+                        (response) => {
+                            dispatch({type: DELETE_DEVICE, device: {...device}})
                             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).then(r => {
                             })
 
