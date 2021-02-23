@@ -19,10 +19,10 @@ export const HomeHeader = () => {
         })
     }
     const selected = devices.filter((item_device) => {
-        console.log(item_device);
+        // console.log(item_device);
         return item_device.selected;
     });
-    const Title = (selected.length != 0) ? `Selected ${selected.length}` : `Devices`;
+    const Title = (selected.length != 0) ? `Selected ${selected.length}` : `Actuators`;
     const _handleDelete = () => {
 
         selected.forEach((item => {
