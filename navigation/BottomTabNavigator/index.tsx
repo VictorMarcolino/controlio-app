@@ -17,9 +17,7 @@ function BottomTabNavigator(props: any) {
 
     return (
         <Tab.Navigator
-            initialRouteName="TabOne" barStyle={{
-            backgroundColor: colors.primary
-        }}>
+            initialRouteName="TabOne">
             <Tab.Screen
                 name="TabOne"
                 component={ConfigurationTab}

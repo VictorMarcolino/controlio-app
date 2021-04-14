@@ -17,8 +17,8 @@ export const fetch_device = (identifier: string) => {
 };
 export const fetch_devices = () => {
     const host = store.getState().config.host.url
-    return (dispatch: any) => {
-        fetch(
+    return async (dispatch: any) => {
+        await fetch(
             `${host}/api/device_switch/`, {
                 method: 'GET',
                 headers: {
@@ -47,7 +47,8 @@ export const fetch_devices = () => {
                 ToastAndroid.TOP, //can be TOP, BOTTON, CENTER
             );
 
-        })
+        });
+        return Promise.resolve();
 
     }
 };
@@ -153,7 +154,7 @@ export const delete_device = (device: any) => {
     }
 }
 
-export const generate_code = (devices: Device[]) => {
+export const generate_code = ({selected, kind_of_code}: { selected: Device[], kind_of_code: any }) => {
     const host = store.getState().config.host.url
     return (dispatch: any) => {
         const url = `${host}/api/device_switch/code-generate?download=false`
@@ -165,8 +166,9 @@ export const generate_code = (devices: Device[]) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                kind_of_code: 'esp8266',
-                devices_uuids: devices.map((item) => {
+                kind_of_code: kind_of_code,
+                host,
+                devices_uuids: selected.map((item) => {
                     return item.identifier
                 })
             })

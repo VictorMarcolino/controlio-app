@@ -24,6 +24,7 @@ export type TabAddDevicesParamList = {
 
 export interface Device {
   identifier: string;
+  pin: string;
   name: string;
   is_on: boolean;
   selected: boolean;

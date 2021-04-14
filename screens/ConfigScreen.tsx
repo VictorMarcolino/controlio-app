@@ -2,7 +2,6 @@ import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {View} from '../components/Themed';
 import {TextInput} from "react-native-paper";
-import {colors} from "../constants/Colors";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../types";
 import {set_host} from "../store/actions/config";
@@ -34,7 +33,6 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
         flex: 1,
-        backgroundColor: colors.background
     },
     textInput: {
         marginTop: 10,

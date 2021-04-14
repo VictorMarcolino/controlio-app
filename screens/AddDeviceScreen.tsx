@@ -2,7 +2,7 @@ import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import {View} from '../components/Themed';
 import {Button, TextInput, useTheme} from "react-native-paper";
-import Colors, {colors} from "../constants/Colors";
+import Colors from "../constants/Colors";
 import {Device} from "../types";
 import {create_device} from "../store/actions/devices";
 import {useDispatch} from "react-redux";
@@ -14,6 +14,7 @@ export default function AddDeviceScreen() {
     const [object, setObj] = React.useState({
         identifier: '',
         is_on: false,
+        pin: '',
         name: ''
     } as Device);
     return (
@@ -27,10 +28,23 @@ export default function AddDeviceScreen() {
                 onChangeText={_text => setObj({...object, name: _text})}
                 style={styles.textInput}
             />
+            <TextInput
+                label="Pin"
+                value={object.pin}
+                mode="outlined"
+                underlineColor={Colors.primaryColor}
+                selectionColor={Colors.primaryColor}
+                onChangeText={_text => setObj({...object, pin: _text})}
+                style={styles.textInput}
+            />
             <Button disabled={!object.name} icon="content-save-move" mode="contained" onPress={() => {
                 if (object.name) {
                     dispatch(create_device(object))
-                    setObj({...object, name: ''})
+                    setObj({
+                        ...object,
+                        name: '',
+                        pin: '',
+                    })
                 }
             }}>
                 Save
@@ -42,8 +56,6 @@ export default function AddDeviceScreen() {
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 16,
-        flex: 1,
-        backgroundColor: colors.background
     },
     textInput: {
         marginVertical: 10

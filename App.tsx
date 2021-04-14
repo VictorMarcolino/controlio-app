@@ -8,7 +8,7 @@ import Navigation from './navigation';
 import {Provider} from "react-redux";
 import {store} from "./store";
 import {Provider as PaperProvider} from 'react-native-paper';
-import {theme} from "./constants/Colors";
+import {darkTheme, lightTheme} from "./constants/Themes";
 
 
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
     } else {
         return (
             <Provider store={store}>
-                <PaperProvider theme={theme}>
+                <PaperProvider theme={(colorScheme === 'dark') ? darkTheme : lightTheme}>
                     <SafeAreaProvider>
                         <Navigation colorScheme={colorScheme}/>
                         <StatusBar/>

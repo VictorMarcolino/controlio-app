@@ -1,10 +1,9 @@
 import {useDispatch} from "react-redux";
-import {Button, Card} from "react-native-paper";
+import {Button, Card, Text} from "react-native-paper";
 import {toggle_switch, update_device} from "../../../store/actions/devices";
 import * as React from "react";
 import styles from "../styles";
 import * as Haptics from 'expo-haptics';
-import {Text} from "react-native";
 
 
 export default function DeviceSwitchComponent({
@@ -30,11 +29,11 @@ export default function DeviceSwitchComponent({
         } : toggleSelected} onPress={editMode ? toggleSelected : () => {
         }}>
             <Card.Title title={name}
-                        titleStyle={styles.textStyle}
+
             />
             <Card.Content>
-                <Text style={styles.textStyle}>{`Connection: ${is_on ? "Online" : "Offline"}`}</Text>
-                <Text style={styles.textStyle}>{`State: ${is_on ? "High" : "Low"}`}</Text>
+                <Text>{`Connection: ${is_on ? "Online" : "Offline"}`}</Text>
+                <Text>{`State: ${is_on ? "High" : "Low"}`}</Text>
             </Card.Content>
             <Card.Actions>
                 <Button disabled={false} style={{...styles.container}}
