@@ -3,6 +3,10 @@ import {CREATE_DEVICE, DELETE_DEVICE, FETCH_DEVICE, FETCH_DEVICES, TOGGLE_DEVICE
 import {ToastAndroid} from "react-native";
 import {Device} from "../../types";
 import * as Haptics from 'expo-haptics';
+import * as MediaLibrary from 'expo-media-library';
+import * as FileSystem from 'expo-file-system';
+import * as Permissions from 'expo-permissions';
+import * as Sharing from 'expo-sharing';
 
 
 export const fetch_device = (identifier: string) => {
@@ -146,5 +150,58 @@ export const delete_device = (device: any) => {
                     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).then(r => {
                     })
                 });
+    }
+}
+
+export const generate_code = (devices: Device[]) => {
+    const host = store.getState().config.host.url
+    return (dispatch: any) => {
+        const url = `${host}/api/device_switch/code-generate?download=false`
+
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                kind_of_code: 'esp8266',
+                devices_uuids: devices.map((item) => {
+                    return item.identifier
+                })
+            })
+        }).then(
+            res => {
+                res.json().then(
+                    (response) => {
+                        console.log(response)
+                        const saveFile = async (something: string, fileName: string) => {
+                            const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+                            if (status === "granted") {
+                                let fileUri = FileSystem.documentDirectory + `${fileName}.txt`;
+                                await FileSystem.writeAsStringAsync(fileUri, something, {encoding: FileSystem.EncodingType.UTF8});
+                                await Sharing.shareAsync(fileUri);
+                                const asset = await MediaLibrary.createAssetAsync(fileUri)
+                                await MediaLibrary.createAlbumAsync("Download", asset, false)
+                            }
+                        }
+                        saveFile(response.code, response.kind_of_code);
+                        dispatch({type: "NONEdfg"})
+                        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).then(r => {
+                        })
+
+                    }, error => {
+                        console.log(error)
+                        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).then(r => {
+                        })
+                    }
+                )
+
+            },
+            error => {
+                console.log(error)
+                Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error).then(r => {
+                })
+            });
     }
 }

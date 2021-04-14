@@ -23,6 +23,25 @@ export default {
           },
         },
       },
+      Auth: {
+        screens: {
+          TabOne: {
+            screens: {
+              TabOneScreen: 'one',
+            },
+          },
+          TabTwo: {
+            screens: {
+              TabTwoScreen: 'two',
+            },
+          },
+          TabThree: {
+            screens: {
+              TabTwoScreen: 'three',
+            },
+          },
+        },
+      },
       NotFound: '*',
     },
   },
