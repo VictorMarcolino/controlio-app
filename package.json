@@ -55,6 +55,7 @@
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
     "jest-expo": "~39.0.0",
+    "standard-version": "^9.2.0",
     "typescript": "~3.9.5",
     "yarn": "^1.22.10"
   },

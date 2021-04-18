@@ -26,7 +26,7 @@
     },
     "android": {
       "package": "com.victorrl.ControlIO",
-      "versionCode": 2,
+      "versionCode": 3,
       "permissions": [
         "VIBRATE",
         "READ_EXTERNAL_STORAGE",
