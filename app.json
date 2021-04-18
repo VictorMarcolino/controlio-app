@@ -2,7 +2,7 @@
   "expo": {
     "name": "ControlIO",
     "slug": "ControlIO",
-    "version": "1.0.1",
+    "version": "1.1.2",
     "orientation": "portrait",
     "icon": "./assets/images/remote-control.png",
     "scheme": "myapp",

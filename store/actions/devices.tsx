@@ -17,6 +17,7 @@ export const fetch_device = (identifier: string) => {
 };
 export const fetch_devices = () => {
     const host = store.getState().config.host.url
+    console.log(host)
     return async (dispatch: any) => {
         await fetch(
             `${host}/api/device_switch/`, {

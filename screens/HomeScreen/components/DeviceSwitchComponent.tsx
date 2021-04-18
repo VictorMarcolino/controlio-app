@@ -4,6 +4,8 @@ import {toggle_switch, update_device} from "../../../store/actions/devices";
 import * as React from "react";
 import styles from "../styles";
 import * as Haptics from 'expo-haptics';
+import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {View} from "react-native";
 
 
 export default function DeviceSwitchComponent({
@@ -28,9 +30,17 @@ export default function DeviceSwitchComponent({
         <Card elevation={0} style={{...styles.card, ...s}} onLongPress={editMode ? () => {
         } : toggleSelected} onPress={editMode ? toggleSelected : () => {
         }}>
-            <Card.Title title={name}
+            <View style={{
+                position: "absolute",
+                top: 8,
+                right: 8,
+            }}>
+                <MaterialCommunityIcons name={is_on ? "lan-connect" : "lan-disconnect"} size={24}
+                                        color={is_on ? "green" : "red"}/>
 
-            />
+            </View>
+
+            <Card.Title title={name}/>
             <Card.Content>
                 <Text>{`Connection: ${is_on ? "Online" : "Offline"}`}</Text>
                 <Text>{`State: ${is_on ? "High" : "Low"}`}</Text>
@@ -38,8 +48,7 @@ export default function DeviceSwitchComponent({
             <Card.Actions>
                 <Button disabled={false} style={{...styles.container}}
                         mode="contained" onPress={editMode ? () => {
-                } : changeState}
-                >
+                } : changeState}>
                     Switch
                 </Button>
             </Card.Actions>

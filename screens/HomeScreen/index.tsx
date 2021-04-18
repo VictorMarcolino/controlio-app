@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FlatList, Platform, View} from 'react-native';
+import {FlatList, Platform} from 'react-native';
 import {useDispatch, useSelector} from "react-redux";
 import {Device, RootState} from "../../types";
 import {fetch_devices} from "../../store/actions/devices";
@@ -30,7 +30,6 @@ export default function HomeScreen(props: any) {
 
 
     return (
-        <View>
             <FlatList data={devices} keyExtractor={item => item.identifier}
                       style={styles.list_card}
                       initialNumToRender={7}
@@ -51,8 +50,6 @@ export default function HomeScreen(props: any) {
                           }}
             >
             </FlatList>
-
-        </View>
     );
 }
 

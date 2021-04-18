@@ -1,4 +1,4 @@
-import {SET_HOST} from "../actions/config";
+import {SET_HOST} from "../actions";
 
 const initialState = {
     host: {

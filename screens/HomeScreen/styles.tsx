@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     list_card: {
+        height: "100%",
         paddingVertical: 0,
     },
     card: {

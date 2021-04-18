@@ -15,8 +15,6 @@ export const darkTheme = {
     colors: {
         ...ddt.colors,
         ...DarkTheme.colors,
-        // backdrop: "#6200ee",
-        // accent: "#ffffff",
     },
 };
 

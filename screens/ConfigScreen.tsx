@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {StyleSheet} from 'react-native';
-import {View} from '../components/Themed';
+import {StyleSheet, View} from 'react-native';
+
 import {TextInput} from "react-native-paper";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../types";

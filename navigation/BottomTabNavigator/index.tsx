@@ -13,8 +13,6 @@ import DevicesAddTab from "./AddDeviceTab";
 const Tab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
 function BottomTabNavigator(props: any) {
-    const {colors} = props.theme;
-
     return (
         <Tab.Navigator
             initialRouteName="TabOne">

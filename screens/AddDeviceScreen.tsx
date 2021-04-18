@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {StyleSheet} from 'react-native';
-import {View} from '../components/Themed';
+import {StyleSheet, View} from 'react-native';
 import {Button, TextInput, useTheme} from "react-native-paper";
-import Colors from "../constants/Colors";
 import {Device} from "../types";
 import {create_device} from "../store/actions/devices";
 import {useDispatch} from "react-redux";
@@ -23,8 +21,6 @@ export default function AddDeviceScreen() {
                 label="Name"
                 value={object.name}
                 mode="outlined"
-                underlineColor={Colors.primaryColor}
-                selectionColor={Colors.primaryColor}
                 onChangeText={_text => setObj({...object, name: _text})}
                 style={styles.textInput}
             />
@@ -32,8 +28,6 @@ export default function AddDeviceScreen() {
                 label="Pin"
                 value={object.pin}
                 mode="outlined"
-                underlineColor={Colors.primaryColor}
-                selectionColor={Colors.primaryColor}
                 onChangeText={_text => setObj({...object, pin: _text})}
                 style={styles.textInput}
             />
@@ -55,6 +49,7 @@ export default function AddDeviceScreen() {
 
 const styles = StyleSheet.create({
     container: {
+        height: "100%",
         paddingHorizontal: 16,
     },
     textInput: {
