@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, TextInput, useTheme} from "react-native-paper";
-import {Device} from "../types";
-import {create_device} from "../store/actions/devices";
+import {Actuator} from "../types";
+import {create_actuator} from "../store/actions/actuator";
 import {useDispatch} from "react-redux";
 
 
-export default function AddDeviceScreen() {
+export default function AddActuatorScreen() {
     const {colors} = useTheme();
     const dispatch = useDispatch();
     const [object, setObj] = React.useState({
@@ -14,7 +14,7 @@ export default function AddDeviceScreen() {
         is_on: false,
         pin: '',
         name: ''
-    } as Device);
+    } as Actuator);
     return (
         <View style={styles.container}>
             <TextInput
@@ -33,7 +33,7 @@ export default function AddDeviceScreen() {
             />
             <Button disabled={!object.name} icon="content-save-move" mode="contained" onPress={() => {
                 if (object.name) {
-                    dispatch(create_device(object))
+                    dispatch(create_actuator(object))
                     setObj({
                         ...object,
                         name: '',

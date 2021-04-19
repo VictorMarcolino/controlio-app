@@ -17,29 +17,29 @@ export type TabHomeParamList = {
   Home: undefined;
 };
 
-export type TabAddDevicesParamList = {
-  AddDevice: undefined;
+export type TabAddactuatorsParamList = {
+    AddActuator: undefined;
 };
 
 
-export interface Device {
-  identifier: string;
-  pin: string;
-  name: string;
-  is_on: boolean;
-  selected: boolean;
+export interface Actuator {
+    identifier: string;
+    pin: string;
+    name: string;
+    is_on: boolean;
+    selected: boolean;
 }
 
-export interface DeviceSwitch extends Device {
+export interface ActuatorBinary extends Actuator {
 }
 
-export interface DeviceRange extends Device {
-  currentValue: number;
-  maxValue: number;
-  minValue: number;
+export interface ActuatorRange extends Actuator {
+    currentValue: number;
+    maxValue: number;
+    minValue: number;
 }
 
 export interface RootState {
   config: any;
-  devices: any
+    actuators: any
 }

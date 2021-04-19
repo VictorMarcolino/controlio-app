@@ -1,11 +1,11 @@
 import {combineReducers} from "redux";
-import devicesReducer from "./devices";
+import actuatorsReducer from "./actuators";
 import configReducer from "./config";
 import serverReducer from "./server";
 
 export const rootReducer = combineReducers(
     {
-        devices: devicesReducer,
+        actuators: actuatorsReducer,
         config: configReducer,
         server: serverReducer,
     });

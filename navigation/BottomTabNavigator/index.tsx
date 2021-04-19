@@ -7,8 +7,8 @@ import {BottomTabParamList} from '../../types';
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
 import {withTheme} from "react-native-paper";
 import ConfigurationTab from "./ConfigurationTab";
-import DevicesHomeTab from "./HomeTab";
-import DevicesAddTab from "./AddDeviceTab";
+import actuatorsHomeTab from "./HomeTab";
+import actuatorsAddTab from "./AddActuatorTab";
 
 const Tab = createMaterialBottomTabNavigator<BottomTabParamList>();
 
@@ -28,9 +28,9 @@ function BottomTabNavigator(props: any) {
             />
             <Tab.Screen
                 name="TabTwo"
-                component={DevicesHomeTab}
+                component={actuatorsHomeTab}
                 options={{
-                    tabBarLabel: 'Devices',
+                    tabBarLabel: 'actuators',
                     tabBarIcon: ({color}) => {
                         return <MaterialCommunityIcons name="chip" color={color} size={26}/>
                     },
@@ -38,9 +38,9 @@ function BottomTabNavigator(props: any) {
             />
             <Tab.Screen
                 name="TabThree"
-                component={DevicesAddTab}
+                component={actuatorsAddTab}
                 options={{
-                    tabBarLabel: 'Add Devices',
+                    tabBarLabel: 'Add actuators',
                     tabBarIcon: ({color}) => {
                         return <MaterialCommunityIcons name="layers-plus" color={color} size={26}/>
                     },

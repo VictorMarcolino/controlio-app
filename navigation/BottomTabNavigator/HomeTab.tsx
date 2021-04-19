@@ -6,7 +6,7 @@ import {HomeHeader} from "./Components";
 
 const Stack = createStackNavigator<TabHomeParamList>();
 
-export default function DevicesHomeTab() {
+export default function actuatorsHomeTab() {
     return (
         <Stack.Navigator screenOptions={
             {

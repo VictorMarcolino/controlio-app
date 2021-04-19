@@ -1,7 +1,7 @@
-export const FETCH_DEVICES = 'FETCH_DEVICES';
-export const DELETE_DEVICE = 'DELETE_DEVICE';
-export const FETCH_DEVICE = 'FETCH_DEVICE';
-export const TOGGLE_DEVICE = 'TOGGLE_DEVICE';
-export const UPDATE_DEVICE_STATE = 'UPDATE_DEVICE_STATE';
-export const CREATE_DEVICE = 'CREATE_DEVICE';
+export const FETCH_actuators = 'FETCH_actuators';
+export const DELETE_ACTUATOR = 'DELETE_ACTUATOR';
+export const FETCH_ACTUATOR = 'FETCH_ACTUATOR';
+export const TOGGLE_ACTUATOR = 'TOGGLE_ACTUATOR';
+export const UPDATE_ACTUATOR_STATE = 'UPDATE_ACTUATOR_STATE';
+export const CREATE_ACTUATOR = 'CREATE_ACTUATOR';
 export const SET_HOST = 'SET_HOST';

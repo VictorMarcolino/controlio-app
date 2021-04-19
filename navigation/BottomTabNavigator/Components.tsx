@@ -1,27 +1,27 @@
 import {Appbar, Button, Dialog, Portal, RadioButton} from "react-native-paper";
 import * as React from "react";
-import {Device, RootState} from "../../types";
+import {Actuator, RootState} from "../../types";
 import {useDispatch, useSelector} from "react-redux";
-import {delete_device, generate_code, update_device} from "../../store/actions/devices";
+import {delete_actuator, generate_code, update_actuator} from "../../store/actions/actuator";
 import * as Haptics from "expo-haptics";
 
 export const HomeHeader = () => {
     const dispatch = useDispatch();
-    let devices: Device[] = useSelector((state: RootState) => state.devices);
+    let actuators: Actuator[] = useSelector((state: RootState) => state.actuators);
     const [visible, setVisible] = React.useState(false);
     const [kind_of_code, setChecked] = React.useState('first');
-    const clearSelection = (device: Device) => {
-        dispatch(update_device({identifier: device.identifier, selected: false}));
+    const clearSelection = (actuator: Actuator) => {
+        dispatch(update_actuator({identifier: actuator.identifier, selected: false}));
         Haptics.selectionAsync().then(r => {
         })
     }
-    const selected = devices.filter((item_device) => {
-        return item_device.selected;
+    const selected = actuators.filter((item_actuator) => {
+        return item_actuator.selected;
     });
     const Title = (selected.length != 0) ? `Selected ${selected.length}` : `Actuators`;
     const _handleDelete = () => {
         selected.forEach((item => {
-            dispatch(delete_device({identifier: item.identifier}));
+            dispatch(delete_actuator({identifier: item.identifier}));
         }));
     };
     return (

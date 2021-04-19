@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import {Button, Card, Text} from "react-native-paper";
-import {toggle_switch, update_device} from "../../../store/actions/devices";
+import {toggle_switch, update_actuator} from "../../../store/actions/actuator";
 import * as React from "react";
 import styles from "../styles";
 import * as Haptics from 'expo-haptics';
@@ -8,17 +8,17 @@ import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {View} from "react-native";
 
 
-export default function DeviceSwitchComponent({
-                                                  identifier,
-                                                  is_on,
-                                                  name,
-                                                  selected,
-                                                  index,
-                                                  editMode
-                                              }: { identifier: string, is_on: boolean, editMode: boolean, name: string, selected: boolean, index: number }) {
+export default function ActuatorBinaryComponent({
+                                                    identifier,
+                                                    is_on,
+                                                    name,
+                                                    selected,
+                                                    index,
+                                                    editMode
+                                                }: { identifier: string, is_on: boolean, editMode: boolean, name: string, selected: boolean, index: number }) {
     const dispatch = useDispatch();
     const toggleSelected = () => {
-        dispatch(update_device({identifier: identifier, selected: !selected}));
+        dispatch(update_actuator({identifier: identifier, selected: !selected}));
         Haptics.selectionAsync().then(r => {
         })
     }
