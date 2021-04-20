@@ -11,7 +11,7 @@ export default function AddActuatorScreen() {
     const dispatch = useDispatch();
     const [object, setObj] = React.useState({
         identifier: '',
-        is_on: false,
+        state: false,
         pin: '',
         name: ''
     } as Actuator);

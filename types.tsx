@@ -26,7 +26,8 @@ export interface Actuator {
     identifier: string;
     pin: string;
     name: string;
-    is_on: boolean;
+    state: boolean;
+    is_attached: boolean;
     selected: boolean;
 }
 

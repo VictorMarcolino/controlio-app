@@ -10,12 +10,13 @@ import {View} from "react-native";
 
 export default function ActuatorBinaryComponent({
                                                     identifier,
-                                                    is_on,
+                                                    state,
+                                                    is_attached,
                                                     name,
                                                     selected,
                                                     index,
                                                     editMode
-                                                }: { identifier: string, is_on: boolean, editMode: boolean, name: string, selected: boolean, index: number }) {
+                                                }: { identifier: string, state: boolean, is_attached: boolean, editMode: boolean, name: string, selected: boolean, index: number }) {
     const dispatch = useDispatch();
     const toggleSelected = () => {
         dispatch(update_actuator({identifier: identifier, selected: !selected}));
@@ -23,7 +24,7 @@ export default function ActuatorBinaryComponent({
         })
     }
     const changeState = () => {
-        dispatch(toggle_switch({identifier: identifier, is_on: !is_on}));
+        dispatch(toggle_switch({identifier: identifier, state: !state}));
     }
     const s = (selected) ? styles.selectedCard : {};
     return (
@@ -34,16 +35,20 @@ export default function ActuatorBinaryComponent({
                 position: "absolute",
                 top: 8,
                 right: 8,
+                flexDirection: "row"
             }}>
-                <MaterialCommunityIcons name={is_on ? "lan-connect" : "lan-disconnect"} size={24}
-                                        color={is_on ? "green" : "red"}/>
+                <MaterialCommunityIcons name="power" size={24} color={state ? "green" : "red"}/>
+                <MaterialCommunityIcons
+                    name={is_attached ? "lan-connect" : "lan-disconnect"} size={24}
+                    color={is_attached ? "green" : "red"}
+                />
 
             </View>
 
             <Card.Title title={name}/>
             <Card.Content>
-                <Text>{`Connection: ${is_on ? "Online" : "Offline"}`}</Text>
-                <Text>{`State: ${is_on ? "High" : "Low"}`}</Text>
+                <Text>{`Connection: ${is_attached ? "Online" : "Offline"}`}</Text>
+                <Text>{`State: ${state ? "High" : "Low"}`}</Text>
             </Card.Content>
             <Card.Actions>
                 <Button disabled={false} style={{...styles.container}}
