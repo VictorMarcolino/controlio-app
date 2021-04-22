@@ -9,18 +9,38 @@ export type BottomTabParamList = {
   TabThree: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type TabConfigParamList = {
+  Configuration: undefined;
 };
 
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type TabHomeParamList = {
+  Home: undefined;
 };
 
-export type SwitchDevice = {
-//
+export type TabAddactuatorsParamList = {
+    AddActuator: undefined;
+};
+
+
+export interface Actuator {
+    identifier: string;
+    pin: string;
+    name: string;
+    state: boolean;
+    is_attached: boolean;
+    selected: boolean;
 }
 
-export type RangedDevice = {
+export interface ActuatorBinary extends Actuator {
+}
 
+export interface ActuatorRange extends Actuator {
+    currentValue: number;
+    maxValue: number;
+    minValue: number;
+}
+
+export interface RootState {
+  config: any;
+    actuators: any
 }
