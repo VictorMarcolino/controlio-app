@@ -51,7 +51,7 @@ export default function ActuatorBinaryComponent({
                 <Text>{`State: ${state ? "High" : "Low"}`}</Text>
             </Card.Content>
             <Card.Actions>
-                <Button disabled={false} style={{...styles.container}}
+                <Button disabled={!is_attached} style={{...styles.container}}
                         mode="contained" onPress={editMode ? () => {
                 } : changeState}>
                     Switch
